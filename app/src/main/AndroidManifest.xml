@@ -11,6 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".DataEntryActivity"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"
+
             ></activity>
         <activity android:name=".ImplicitActivity">
             <intent-filter>

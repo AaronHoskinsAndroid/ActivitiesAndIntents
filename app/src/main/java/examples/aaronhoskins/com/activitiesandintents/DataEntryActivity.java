@@ -13,6 +13,7 @@ import android.widget.EditText;
 public class DataEntryActivity extends AppCompatActivity {
     EditText etUserInput;
     EditText etLastName;
+    String userInput;
     Intent passedIntent;
     int viewFlag = 0;
     @Override
@@ -57,11 +58,23 @@ public class DataEntryActivity extends AppCompatActivity {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+        if(Configuration.ORIENTATION_LANDSCAPE == newConfig.orientation) {
+
+        } else {
+
+        }
         super.onConfigurationChanged(newConfig);
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        outState.putString("user_input", etUserInput.getText().toString());
         super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        userInput = savedInstanceState.getString("user_input");
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
